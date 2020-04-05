@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://materials/textures/grass.jpg" type="Texture" id=1]
+[ext_resource path="res://materials/textures/dirt.jpg" type="Texture" id=2]
+[ext_resource path="res://maps/Test/terrain.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform float tex_scale = 10f;
+uniform float map_size = 1024f;
+
+uniform sampler2D map;
+uniform sampler2D dirt;
+uniform sampler2D rock;
+
+vec3 lerp(vec3 a, vec3 b, float f){
+	return a*f+b*(1f-f);
+}
+
+void fragment(){
+	ALBEDO = lerp(texture(dirt,UV/tex_scale).rgb, texture(rock,UV/tex_scale).rgb, texture(map,UV/map_size).g);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/tex_scale = 5.0
+shader_param/map_size = 1024.0
+shader_param/map = ExtResource( 3 )
+shader_param/dirt = ExtResource( 2 )
+shader_param/rock = ExtResource( 1 )

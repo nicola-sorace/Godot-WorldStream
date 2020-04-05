@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform bool active = true;
+uniform vec2 pos;
+uniform float rad;
+
+void fragment(){
+	if( active ){
+		float t = 2f;
+		float d = length(pos-UV);
+		
+		if( d<=rad ){
+			ALPHA = d/rad;
+		}else{
+			ALPHA = 0f;
+		}
+		ALBEDO = vec3(1,0,0);
+	}
+	else{
+		ALPHA = 0f;
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/active = true
+shader_param/pos = Vector2( 10, 0 )
+shader_param/rad = 10.0
