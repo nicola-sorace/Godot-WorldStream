@@ -4,8 +4,7 @@ onready var root = get_node('/root/root')
 var cam # root.cam
 
 const TOOL = preload('Tool.gd')
-var height_tools = []
-var texture_tool = preload('tools/TextureTool.gd').new()
+var tools = [[]] # List of tools in each mode
 var active_tool : Tool
 
 onready var mode_buts = get_node("Modes").get_children()
@@ -39,19 +38,14 @@ func _set_mode(i: int):
 		mode_buts[j].set_pressed( j == i )
 	
 	submodes.clear()
-	if i == MODE_HEIGHT:
-		for t in height_tools:
-			submodes.add_item(t.tool_name)
-		_set_submode(0)
-	elif i == MODE_TEXTURE:
-		_disconnect_tool()
-		active_tool = texture_tool
-		_connect_tool()
+	for t in tools[i]:
+		submodes.add_item(t.tool_name)
+	_set_submode(0)
 
 func _set_submode(i: int):
 	submodes.select(i)
 	_disconnect_tool()
-	active_tool = height_tools[i]
+	active_tool = tools[mode][i]
 	_connect_tool()
 	_update_tool_options()
 
@@ -92,7 +86,7 @@ func _connect_tool():
 
 func _scroll(dir: int):
 	var rad = active_tool.opts['radius']
-	var new_val = rad[TOOL.OPT_VAL] + dir*rad[TOOL.OPT_STEP]
+	var new_val = rad[TOOL.OPT_VAL] - dir*rad[TOOL.OPT_STEP]
 	if new_val >= rad[TOOL.OPT_MIN] and new_val <= rad[TOOL.OPT_MAX]:
 		rad[TOOL.OPT_VAL] = new_val
 	root.terrain.TOOL_SHADER.set_shader_param("rad", rad[TOOL.OPT_VAL])
@@ -108,8 +102,15 @@ func _ready():
 		action_buts[i].connect("pressed", self, "_action", [i])
 	submodes.connect("item_selected", self, "_set_submode")
 	
+	tools = []
+	for m in range(4): # For each available mode
+		tools.append([])
+	# Height
 	for tool_name in _get_files_in('tools/HeightTools'):
-		height_tools.append(load('tools/HeightTools/'+tool_name).new())
+		tools[MODE_HEIGHT].append(load('tools/HeightTools/'+tool_name).new())
+	# Texture
+	tools[MODE_TEXTURE].append(load('tools/TextureTool.gd').new('Grass', 0.0))
+	tools[MODE_TEXTURE].append(load('tools/TextureTool.gd').new('Dirt', 1.0))
 	
 	call_deferred("_set_cam")
 	call_deferred("_set_mode", MODE_HEIGHT)
