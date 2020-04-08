@@ -106,11 +106,11 @@ func _ready():
 	for m in range(4): # For each available mode
 		tools.append([])
 	# Height
-	for tool_name in _get_files_in('tools/HeightTools'):
-		tools[MODE_HEIGHT].append(load('tools/HeightTools/'+tool_name).new())
+	for tool_name in _get_files_in('scripts/tools/HeightTools'):
+		tools[MODE_HEIGHT].append(load('scripts/tools/HeightTools/'+tool_name).new())
 	# Texture
-	tools[MODE_TEXTURE].append(load('tools/TextureTool.gd').new('Grass', 0.0))
-	tools[MODE_TEXTURE].append(load('tools/TextureTool.gd').new('Dirt', 1.0))
+	tools[MODE_TEXTURE].append(load('scripts/tools/TextureTool.gd').new('Grass', 0.0))
+	tools[MODE_TEXTURE].append(load('scripts/tools/TextureTool.gd').new('Dirt', 1.0))
 	
 	call_deferred("_set_cam")
 	call_deferred("_set_mode", MODE_HEIGHT)

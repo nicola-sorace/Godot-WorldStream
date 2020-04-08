@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Tool",
 "language": "GDScript",
-"path": "res://Tool.gd"
+"path": "res://scripts/Tool.gd"
 } ]
 _global_script_class_icons={
 "Tool": ""

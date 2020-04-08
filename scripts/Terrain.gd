@@ -18,7 +18,7 @@ var MAP_FILES = preload("MapFiles.gd").new()
 
 var MAP_NAME = 'Test'
 const SCALE = 1 # Map scale (meters per pixel)
-var TERRAIN_MATERIAL = preload("materials/Terrain.tres")
+var TERRAIN_MATERIAL = preload("../materials/Terrain.tres")
 var WATER_LEVEL = -1.0
 
 var img
@@ -41,7 +41,7 @@ var thread = Thread.new()
 var abort_thread = false  # Set to 'true' to make threaded process quit as soon as possible (used when tile being loaded is out of date)
 var urgent_update = true  # Set to 'true' to force a non-threaded terrain update (used when player is about to fall off the loaded map)
 
-var TILE = preload("TerrainTile.tscn")
+var TILE = preload("../TerrainTile.tscn")
 
 func create_tile(x,y, res=0):
 	var tile = TILE.instance()

@@ -1,6 +1,6 @@
 extends "Terrain.gd"
 
-const TOOL_SHADER = preload("materials/TerrainToolShader.tres")
+const TOOL_SHADER = preload("../materials/TerrainToolShader.tres")
 
 onready var map_view = get_node("../ViewportContainer/MapViewport")
 onready var map_cam = map_view.get_node("MapCamera")
