@@ -14,12 +14,15 @@ extends Spatial
 export(NodePath) var player_path = null
 onready var player = get_node(player_path)
 
+var MAP_FILES = preload("MapFiles.gd").new()
+
 var MAP_NAME = 'Test'
 const SCALE = 1 # Map scale (meters per pixel)
 var TERRAIN_MATERIAL = preload("materials/Terrain.tres")
 var WATER_LEVEL = -1.0
 
 var img
+var obj_dict = {}
 
 var tiles = [] # Holds the currently visible terrain tiles
 
@@ -142,10 +145,14 @@ func check_update():
 		last_y = y
 
 func _ready():
-	img = load("res://maps/"+MAP_NAME+"/terrain.png").get_data()
+	img = load("maps/"+MAP_NAME+"/terrain.png").get_data()
 	img.decompress()
 	img.lock()
 	set_block_dist(6)
+	
+	var d = {[5, 3]: [ ['Sphere', Vector3(12.12,3,4), Vector3(0,0,0)], ['Sphere', Vector3(20,3,20), Vector3(0,0,0)] ]}
+	MAP_FILES.write_objects(MAP_NAME, d)
+	obj_dict = MAP_FILES.read_objects(MAP_NAME)
 
 func _physics_process(delta):
 	check_update()

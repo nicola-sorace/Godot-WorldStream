@@ -34,8 +34,14 @@ func init(terrain, x, y, rect, TERRAIN_MATERIAL, SCALE):
 	water = get_node("Water")
 	
 	water.set_translation(Vector3(rect.size.x/2*SCALE, terrain.WATER_LEVEL, rect.size.y/2*SCALE))
-	
 	call_deferred("set_translation", Vector3(rect.position.x*SCALE, 0, rect.position.y*SCALE))
+	
+	if [x,y] in terrain.obj_dict:
+		for data in terrain.obj_dict[[x,y]]:
+			var obj = load('objects/'+data[0]+'.tscn').instance()
+			obj.set_translation(Vector3(data[1][0], data[1][1], data[1][2]))
+			obj.set_rotation(Vector3(data[2][0], data[2][1], data[2][2]))
+			add_child(obj)
 
 func set_res(res, force_refresh=false):
 	if res == self.res and not force_refresh:

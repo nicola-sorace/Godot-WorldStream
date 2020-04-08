@@ -9,7 +9,7 @@ Terrain data is stored as an image, with elevation and texture being stored in t
 
 # TODO
  - Basic editor features (saving, history tree etc.)
- - Map objects (e.g. buildings, trees)
+ - Editor tools for creating map objects (e.g. buildings, trees)
  - Bridge gaps between chunks of different resolutions
  - Smoother terrain loading (e.g. fade in new chunks)
  - etc

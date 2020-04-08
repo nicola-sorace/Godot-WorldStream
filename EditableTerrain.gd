@@ -6,7 +6,6 @@ onready var map_view = get_node("../ViewportContainer/MapViewport")
 onready var map_cam = map_view.get_node("MapCamera")
 
 func _ready():
-	._ready()
 	TERRAIN_MATERIAL.set_next_pass(TOOL_SHADER)
 	
 	map_cam.set_size(TS*SCALE)
