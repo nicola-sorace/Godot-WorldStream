@@ -14,7 +14,7 @@ extends Spatial
 export(NodePath) var player_path = null
 onready var player = get_node(player_path)
 
-var MAP_FILES = preload("MapFiles.gd").new()
+var MAP_FILES = preload("WorldFiles.gd").new()
 
 var MAP_NAME = 'Test'
 const SCALE = 1 # Map scale (meters per pixel)
@@ -145,7 +145,7 @@ func check_update():
 		last_y = y
 
 func _ready():
-	img = load("maps/"+MAP_NAME+"/terrain.png").get_data()
+	img = load("worlds/"+MAP_NAME+"/terrain.png").get_data()
 	img.decompress()
 	img.lock()
 	set_block_dist(6)

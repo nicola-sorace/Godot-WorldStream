@@ -24,11 +24,10 @@ func _get_files_in(path):
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)
-	dir.list_dir_begin()
+	dir.list_dir_begin(true, true)
 	var file = dir.get_next()
 	while file != "":
-		if not file.begins_with("."):
-			files.append(file)
+		files.append(file)
 		file = dir.get_next()
 	return files
 
@@ -94,6 +93,17 @@ func _scroll(dir: int):
 func _set_cam():
 	cam = root.cam
 	cam.connect('scroll', self, '_scroll')
+
+func _action(i: int):
+	match i:
+		0: # Generate map
+			pass
+		1: # Quest editor
+			pass
+		2: # Map properties
+			pass
+		3: # Back to world list
+			get_tree().change_scene("WorldList.tscn")
 
 func _ready():
 	for i in range(len(mode_buts)):

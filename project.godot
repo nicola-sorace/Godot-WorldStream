@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="WorldStream"
-run/main_scene="res://WorldEdit.tscn"
+run/main_scene="res://WorldList.tscn"
 config/icon="res://icon.png"
 
 [rendering]

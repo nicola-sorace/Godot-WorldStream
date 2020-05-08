@@ -93,6 +93,12 @@ margin_right = 180.0
 margin_bottom = 80.0
 text = "Properties"
 
+[node name="BackToWorldList" type="Button" parent="HUD/Actions"]
+margin_top = 90.0
+margin_right = 180.0
+margin_bottom = 110.0
+text = "Back to world list"
+
 [node name="Submodes" type="ItemList" parent="HUD"]
 margin_left = 5.0
 margin_top = 50.0

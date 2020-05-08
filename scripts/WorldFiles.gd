@@ -4,11 +4,33 @@ const START_TILE = 0
 const START_OBJECT = 1
 const END_FILE = 2
 
-const maps_dir = "maps/"
+const DEFAULT_MAP_IMG = preload("../icon.png")
+
+const worlds_dir = "worlds/"
+
+func list_worlds() -> Array:
+	var worlds = []
+	var dir = Directory.new()
+	dir.open(worlds_dir)
+	dir.list_dir_begin(true, true)
+	var file = dir.get_next()
+	while file != "":
+		if dir.dir_exists(file):
+			worlds.append(file)
+		file = dir.get_next()
+	return worlds
+
+func get_minimap(world: String) -> Texture:
+	var file = File.new()
+	var file_name = worlds_dir+'/'+world+'/map.png'
+	if file.file_exists(file_name):
+		return load(file_name) as Texture
+	else:
+		return DEFAULT_MAP_IMG
 
 func write_objects(map_name: String, d: Dictionary):
 	var file = File.new()
-	file.open(maps_dir+map_name+'/objects.dat', File.WRITE)
+	file.open(worlds_dir+map_name+'/objects.dat', File.WRITE)
 	
 	# File header ('WOBJ')
 	file.store_buffer([87,79,66,74, 0])
@@ -40,7 +62,7 @@ func write_objects(map_name: String, d: Dictionary):
 func read_objects(map_name: String) -> Dictionary:
 	var d = {}
 	var file = File.new()
-	file.open(maps_dir+map_name+"/objects.dat", File.READ)
+	file.open(worlds_dir+map_name+"/objects.dat", File.READ)
 	assert( file.get_line() == 'WOBJ' )
 	var b = file.get_8()
 	while b == START_TILE:

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://materials/textures/grass.jpg" type="Texture" id=1]
 [ext_resource path="res://materials/textures/dirt.jpg" type="Texture" id=2]
-[ext_resource path="res://maps/Test/terrain.png" type="Texture" id=3]
+[ext_resource path="res://worlds/Test/terrain.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;

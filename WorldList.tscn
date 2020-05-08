@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/WorldList.gd" type="Script" id=1]
+
+[node name="WorldList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -200.0
+margin_right = 400.0
+margin_bottom = 200.0
+
+[node name="List" type="ItemList" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 100.0
+margin_right = -10.0
+margin_bottom = -100.0
+fixed_icon_size = Vector2( 128, 128 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadWorld" type="Button" parent="Panel"]
+margin_left = 608.102
+margin_top = 320.851
+margin_right = 778.102
+margin_bottom = 378.851
+disabled = true
+text = "Open"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewWorld" type="Button" parent="Panel"]
+margin_left = 26.45
+margin_top = 313.4
+margin_right = 169.45
+margin_bottom = 343.4
+text = "Create New World"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewWorld" type="ConfirmationDialog" parent="."]
+margin_left = 211.851
+margin_top = 105.45
+margin_right = 727.851
+margin_bottom = 494.45
+window_title = "Create New World"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="NewWorld"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+
+[node name="WorldName" type="TextEdit" parent="NewWorld/Control"]
+margin_left = 176.0
+margin_top = 61.0
+margin_right = 334.0
+margin_bottom = 94.0

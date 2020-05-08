@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/terrain.png-f07358470ed30498e75e596076b402a7.s3tc.stex"
-path.etc2="res://.import/terrain.png-f07358470ed30498e75e596076b402a7.etc2.stex"
+path.s3tc="res://.import/terrain.png-ecd4953812c94a3a102f5a989f0b1448.s3tc.stex"
+path.etc2="res://.import/terrain.png-ecd4953812c94a3a102f5a989f0b1448.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/Test/terrain.png"
-dest_files=[ "res://.import/terrain.png-f07358470ed30498e75e596076b402a7.s3tc.stex", "res://.import/terrain.png-f07358470ed30498e75e596076b402a7.etc2.stex" ]
+source_file="res://worlds/Test/terrain.png"
+dest_files=[ "res://.import/terrain.png-ecd4953812c94a3a102f5a989f0b1448.s3tc.stex", "res://.import/terrain.png-ecd4953812c94a3a102f5a989f0b1448.etc2.stex" ]
 
 [params]
 
