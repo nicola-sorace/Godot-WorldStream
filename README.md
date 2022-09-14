@@ -1,6 +1,6 @@
 # Godot-WorldStream
 A Godot system to create game maps (3D) that load smoothly as the player moves.
-This is based on the system originally developed for https://github.com/rokyfox/TerrainTest .
+This is based on the system originally developed for https://github.com/nicola-sorace/TerrainTest .
 
 A WIP world editor is icluded.
 
